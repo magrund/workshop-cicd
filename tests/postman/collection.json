@@ -160,7 +160,13 @@
               "// getestet. Ergaenze hier einen eigenen Test, der prueft, dass",
               "// die API ohne 'name' im Body mit 400 antwortet.",
               "// ===========================================================",
-              ""
+              "pm.test('Status code is 400', function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "pm.test('Antwort enthaelt eine Fehlermeldung', function () {",
+              "    pm.expect(pm.response.json().error).to.eql('name is required');",
+              "});"
             ]
           }
         }
